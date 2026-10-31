@@ -1,0 +1,71 @@
+insert into akademik.mahasiswa (
+	id, nim, nama, jurusan, tanggal_lahir
+) values 	
+	(19+2, '24009', 'Joni', 'Sastra Mesin', '2005-08-22'),
+	(10+1, '24010', 'Kipli', 'Sastra Mesin', '2005-09-21')
+;
+
+select * from akademik.mahasiswa order BY id asc; 
+
+select * from akademik.mahasiswa order BY id desc; 
+
+select * from akademik.mahasiswa 
+
+select * from akademik.mahasiswa where jurusan = 'Sastra mesin';
+
+select * from akademik.mahasiswa where id in (1,2);
+
+select * from akademik.mahasiswa where id = 6 or jurusan = 'TI';
+
+select * from akademik.mahasiswa where tanggal_lahir > '2005-07-25';
+
+select * from akademik.mahasiswa where nama like '%o%'; 
+
+update akademik.mahasiswa set nama = 'sueby', jurusan = 'TI' where id = 3;
+
+update akademik.mahasiswa set nama = 'sueby', jurusan = 'TI' where id = 3;
+
+delete from akademik.mahasiswa where id in (2,3);
+
+
+update akademik.mahasiswa set jurusan = 'TI' where id in(1,2,3);
+alter table akademik.mahasiswa add primary key (id);
+
+
+
+create table akademik.barang (
+	id int,
+	kode_barang varchar (30),
+	nama_barang varchar (30),
+	kategori varchar (10),
+	harga varchar (30),
+	stok int
+	
+);
+
+
+insert into akademik.barang (
+	id, kode_barang, nama_barang, kategori, harga, stok
+) values 	
+	(1, 'BRG001', 'Penghapus', 'ATK', 'Rp 1.000', '128'),
+	(2, 'BRG002', 'Tembakau', 'Nikotin', 'Rp 90.000', '22')
+;
+
+select * from akademik.barang;
+
+truncate akademik.barang;
+
+
+COPY akademik.barang (
+    id, kode_barang, nama_barang,
+    kategori, harga, stok
+)
+FROM 'C:\Users\admin\Downloads\barang_100.csv'
+WITH (
+    FORMAT CSV,
+    HEADER TRUE,
+    DELIMITER ','
+);
+
+ALTER TABLE akademik.barang
+ALTER COLUMN kategori TYPE VARCHAR(100);
